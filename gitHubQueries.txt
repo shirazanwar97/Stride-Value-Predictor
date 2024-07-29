@@ -1,0 +1,33 @@
+For first time setup-
+
+Make sure you have created all/usefull branches locally as same as on the remote(github server).
+
+1. git checkout <branch_name>
+2. <yet to discover>
+
+
+For regular use-
+1. make sure to switch to branch that you want to use.
+	This should be ideally collaborator branch(mpanda or skhan25)
+2. Once in the desired branch, you go on and do all the changes you are trying to do.
+3. once all the changes are done, go on to commit those changes by using following commands
+
+i) git add file1.txt file2.txt file3.txt
+   or
+   git add .
+ii) git commit
+iii) git push origin <collaborator_branch_name>
+
+For merging collaborator branches changes to work branch-
+1. git checkout work
+2. git merge <collaborator_branch_name>
+3. Resolve any Merge Conflicts (if necessary)--> console will prompt if necessary.
+4. git push origin work
+
+For merging work branches changes to main branch-
+1. git checkout main
+2. git merge work
+3. Resolve any Merge Conflicts (if necessary)--> console will prompt if necessary.
+4. git push origin main
+
+

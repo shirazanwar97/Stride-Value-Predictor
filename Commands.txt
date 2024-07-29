@@ -1,0 +1,20 @@
+cd ~/ece721/project3
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=RelO3 ../721sim
+make -j$(nproc)
+
+
+source /mnt/designkits/spec_2006_2017/O2_fno_bbreorder/activate.bash
+mkdir 473.astar_rivers_ref.252.0.28.gz
+cd 473.astar_rivers_ref.252.0.28.gz
+ln -s /mnt/designkits/spec_2006_2017/O2_fno_bbreorder/app_storage/pk .
+atool-simenv mkgen 473.astar_rivers_ref --checkpoint 473.astar_rivers_ref.252.0.28.gz
+ln -s /mnt/ncsudrive/s/skhan25/721/project4/SVP-721sim/Stride-Value-Predictor-721Sim/build/uarchsim/721sim .
+make cleanrun SIM_FLAGS_EXTRA='--mdp=3,32 --perf=0,0,0,0 --fq=64 --cp=32 --al=256 --lsq=128 --iq=64 --iqnp=4 --fw=4 --dw=4 --iw=8 --rw=4 -e10000000 --vp-enable=1 --vp-perf=0 --vp-svp=0,0,0,0,0,0,0,0,0,0,0,0,0'
+
+atool-simenv list
+atool-simenv list 473.astar_biglakes_ref
+atool-simenv mkgen 473.astar_biglakes_ref --checkpoint 473.astar_biglakes_ref.1844.0.50.gz
+ln -s /mnt/ncsudrive/s/skhan25/721/project4/SVP-721sim/Stride-Value-Predictor-721Sim/build/uarchsim/721sim .
+ln -s /mnt/designkits/spec_2006_2017/O2_fno_bbreorder/app_storage/pk .
